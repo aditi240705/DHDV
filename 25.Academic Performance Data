@@ -1,0 +1,31 @@
+# Load necessary libraries
+library(ggplot2)
+library(plot3D)
+
+# Create a data frame from the provided data
+academic_data <- data.frame(
+  Student = c("A", "B", "C", "D", "E"),
+  Math_Score = c(85, 72, 90, 78, 88),
+  Science_Score = c(78, 85, 80, 75, 82),
+  Attendance = c(95, 92, 98, 85, 93)
+)
+
+scatter3D(academic_data$Math_Score, academic_data$Attendance, academic_data$Science_Score, 
+          main = "Relationship between Math Score, Attendance, and Science Score", 
+          xlab = "Math Score", ylab = "Attendance (%)", zlab = "Science Score")
+
+scatter3D(academic_data$Math_Score, academic_data$Attendance, academic_data$Science_Score, 
+          main = "3D Scatter Plot of Math Score, Attendance, and Science Score", 
+          xlab = "Math Score", ylab = "Attendance (%)", zlab = "Science Score")
+
+surface3D(academic_data$Math_Score, academic_data$Attendance, academic_data$Science_Score, 
+          main = "3D Surface Plot of Science Score vs Math Score and Attendance", 
+          xlab = "Math Score", ylab = "Attendance (%)", zlab = "Science Score")
+
+surface3D(academic_data$Math_Score, rep(0, 5), academic_data$Science_Score, 
+          main = "3D Surface Plot of Science Score vs Math Score", 
+          xlab = "Math Score", ylab = "Attendance (%)", zlab = "Science Score")
+
+surface3D(rep(0, 5), academic_data$Attendance, academic_data$Science_Score, 
+          main = "3D Surface Plot of Science Score vs Attendance", 
+          xlab = "Math Score", ylab = "Attendance (%)", zlab = "Science Score")
