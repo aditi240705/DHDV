@@ -1,0 +1,28 @@
+# Load necessary libraries
+library(ggplot2)
+library(plot3D)
+
+# Create a data frame from the provided data
+market_data <- data.frame(
+  Date = c("2023-01-01", "2023-01-02", "2023-01-03", "2023-01-04", "2023-01-05"),
+  Stock_Price = c(100, 102, 98, 105, 108),
+  Volume_Traded = c(2.5, 3.0, 2.2, 2.8, 3.5),
+  Market_Cap = c(500, 510, 490, 525, 540)
+)
+
+scatter3D(market_data$Volume_Traded, market_data$Market_Cap, market_data$Stock_Price, 
+          main = "Relationship between Volume Traded, Market Cap, and Stock Price", 
+          xlab = "Volume Traded (millions)", ylab = "Market Cap ($)", zlab = "Stock Price ($)")
+
+
+surface3D(market_data$Stock_Price, market_data$Volume_Traded, market_data$Market_Cap, 
+          main = "3D Surface Plot of Market Cap vs Stock Price and Volume Traded", 
+          xlab = "Stock Price ($)", ylab = "Volume Traded (millions)", zlab = "Market Cap ($)")
+
+surface3D(market_data$Stock_Price, rep(0, 5), market_data$Market_Cap, 
+          main = "3D Surface Plot of Market Cap vs Stock Price", 
+          xlab = "Stock Price ($)", ylab = "Volume Traded (millions)", zlab = "Market Cap ($)")
+
+surface3D(rep(0, 5), market_data$Volume_Traded, market_data$Market_Cap, 
+          main = "3D Surface Plot of Market Cap vs Volume Traded", 
+          xlab = "Stock Price ($)", ylab = "Volume Traded (millions)", zlab = "Market Cap ($)")
