@@ -1,0 +1,31 @@
+# Load necessary libraries
+library(ggplot2)
+library(plot3D)
+
+# Create a data frame from the provided data
+env_data <- data.frame(
+  Location = c("A", "B", "C", "D", "E"),
+  Temperature = c(15, 20, 18, 12, 17),
+  Humidity = c(65, 70, 68, 60, 72),
+  CO2_Levels = c(400, 450, 420, 380, 430)
+)
+
+scatter3D(env_data$Temperature, env_data$Humidity, env_data$CO2_Levels, 
+          main = "Relationship between Temperature, Humidity, and CO2 Levels", 
+          xlab = "Temperature (°C)", ylab = "Humidity (%)", zlab = "CO2 Levels (ppm)")
+
+scatter3D(env_data$Temperature, env_data$Humidity, env_data$CO2_Levels, 
+          main = "3D Scatter Plot of Temperature, Humidity, and CO2 Levels", 
+          xlab = "Temperature (°C)", ylab = "Humidity (%)", zlab = "CO2 Levels (ppm)")
+
+surface3D(env_data$Temperature, env_data$Humidity, env_data$CO2_Levels, 
+          main = "3D Surface Plot of CO2 Levels vs Temperature and Humidity", 
+          xlab = "Temperature (°C)", ylab = "Humidity (%)", zlab = "CO2 Levels (ppm)")
+
+surface3D(env_data$Temperature, rep(0, 5), env_data$CO2_Levels, 
+          main = "3D Surface Plot of CO2 Levels vs Temperature", 
+          xlab = "Temperature (°C)", ylab = "Humidity (%)", zlab = "CO2 Levels (ppm)")
+
+surface3D(rep(0, 5), env_data$Humidity, env_data$CO2_Levels, 
+          main = "3D Surface Plot of CO2 Levels vs Humidity", 
+          xlab = "Temperature (°C)", ylab = "Humidity (%)", zlab = "CO2 Levels (ppm)")
