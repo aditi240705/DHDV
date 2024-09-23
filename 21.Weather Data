@@ -1,0 +1,36 @@
+# Load necessary libraries
+library(ggplot2)
+library(plot3D)
+
+# Create a data frame from the provided data
+weather_data <- data.frame(
+  Date = c("2023-01-01", "2023-01-02", "2023-01-03", "2023-01-04", "2023-01-05"),
+  Temperature = c(10, 12, 8, 15, 14),
+  Humidity = c(75, 70, 80, 65, 72),
+  Wind_Speed = c(15, 12, 18, 20, 16)
+)
+
+# We can visualize this using a scatter plot
+ggplot(weather_data, aes(x = Humidity, y = Wind_Speed, color = Temperature)) + 
+  geom_point() + 
+  labs(x = "Humidity (%)", y = "Wind Speed (km/h)", color = "Temperature (°C)")
+
+
+scatter3D(weather_data$Humidity, weather_data$Wind_Speed, weather_data$Temperature, 
+          main = "Relationship between Wind Speed, Humidity, and Temperature", 
+          xlab = "Humidity (%)", ylab = "Wind Speed (km/h)", zlab = "Temperature (°C)")
+
+
+surface3D(weather_data$Humidity, weather_data$Wind_Speed, weather_data$Temperature, 
+          main = "3D Surface Plot of Temperature vs Humidity and Wind Speed", 
+          xlab = "Humidity (%)", ylab = "Wind Speed (km/h)", zlab = "Temperature (°C)")
+
+
+# We can create separate 3D surface plots for temperature vs humidity and temperature vs wind speed
+surface3D(weather_data$Humidity, rep(0, 5), weather_data$Temperature, 
+          main = "3D Surface Plot of Temperature vs Humidity", 
+          xlab = "Humidity (%)", ylab = "Wind Speed (km/h)", zlab = "Temperature (°C)")
+
+surface3D(rep(0, 5), weather_data$Wind_Speed, weather_data$Temperature, 
+          main = "3D Surface Plot of Temperature vs Wind Speed", 
+          xlab = "Humidity (%)", ylab = "Wind Speed (km/h)", zlab = "Temperature (°C)")
